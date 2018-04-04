@@ -6,17 +6,48 @@ services:
         ports:
             - "8080:80"
         volumes:
-            - ./code:/code
-            - ./env/nginx/site.conf:/etc/nginx/conf.d/default.conf
+            - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+        volumes_from:
+            - php
+        links: 
+            - php
+            - phpmyadmin
         networks:
-            - code-network
+            - default
+        restart: always
+
     php:
-        image: php:fpm
+        build: ./docker/php/
+        expose:
+            - 9000
         volumes:
             - ./code:/code
+        links:
+            - mysql
         networks:
-            - code-network
+            - default
+        restart: always
 
-networks:
-    code-network:
-        driver: bridge
+    mysql:
+        image: mysql:latest
+        expose:
+            - 3306
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: database
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        restart: always
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        ports: 
+            - 8081:80
+        links:
+            - mysql
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+        restart: always
