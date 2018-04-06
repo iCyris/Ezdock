@@ -6,10 +6,6 @@
     </head>
     <body>
         <?php
-            $servername = "127.0.0.1";
-            $username = "root";
-            $password = "root";
- 
             try {
                 $conn = new \PDO('mysql:host=mysql;port=3306;dbname=mysql', 'root', 'root');
                 echo "Success! Enjoying coding now."; 
