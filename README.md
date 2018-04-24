@@ -12,3 +12,11 @@ This Docker setup includes PHP7-FPM , MySQL, Njinx and phpMyAdmin.
     * localhost:8081    phpMyAdmin (username: root, password: root)
 4. Stop and clear services: `./stop.sh`
 
+## Issue
+1. Nginx - If `access.log` and `error.log` are empty, try to remove log files and reload nginx:
+
+``` Bash
+$ sudo rm -f /var/log/nginx/*
+$ sudo nginx -s reload
+```
+
