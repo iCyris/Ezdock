@@ -16,7 +16,7 @@ This Docker setup includes PHP7-FPM , MySQL, Njinx and phpMyAdmin.
 1. Nginx - If `access.log` and `error.log` are empty, try to remove log files and reload nginx:
 
 ``` Bash
-$ sudo rm -f /var/log/nginx/*
-$ sudo nginx -s reload
+$ rm -f /var/log/nginx/*
+$ nginx -s reload
 ```
 
