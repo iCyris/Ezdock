@@ -12,7 +12,7 @@ This Docker setup includes PHP7-FPM , MySQL, Njinx and phpMyAdmin.
     * localhost:8081    phpMyAdmin (username: root, password: root)
 4. Stop and clear services: `./stop.sh`
 
-## Check the logs
+## Check logs
 Use `docker logs --help` to know more about that :)
 
 e.g.
