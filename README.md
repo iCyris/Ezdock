@@ -16,6 +16,10 @@ This Docker setup includes PHP7-FPM , MySQL, Njinx and phpMyAdmin.
 Use `docker logs --help` to know more about that :)
 
 e.g.
-1. To show the last 10 logs on the nginx 
-service: `$ docker logs --tail=10 nginx-container-name`
-2. Follow log output: `$ docker logs -f nginx-container-name`
+```
+# Show the last 10 logs on the nginx service: 
+$ docker logs --tail=10 nginx-container-name
+
+# Follow log output: 
+$ docker logs -f nginx-container-name
+```
